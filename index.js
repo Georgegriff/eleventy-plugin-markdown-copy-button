@@ -21,7 +21,25 @@ module.exports = {
       },
       ...webComponentDefinitionsOptions,
     });
-    markdownLibrary = eleventyConfig.markdownLibrary;
+    let markdownLibrary;
+    const markdownOverride = eleventyConfig.libraryOverrides.md;
+    const isMarkdownIt =
+      Boolean(markdownOverride) &&
+      markdownOverride.constructor &&
+      markdownOverride.constructor.name === "MarkdownIt";
+    if (markdownOverride && isMarkdownIt) {
+      markdownLibrary = markdownOverride;
+    } else if (markdownOverride && !isMarkdownIt) {
+      throw new Error(
+        "[eleventy-plugin-markdown-copy-plugin] error: Only markdown-it markdown engine is supported currently."
+      );
+    } else {
+      // set lib in here, markdown-it comes from 11ty dependency
+      markdownLibrary = require("markdown-it")({
+        html: true,
+      });
+      eleventyConfig.setLibrary("md", markdownLibrary);
+    }
 
     // Remember old renderer, if overridden, or proxy to default renderer
     const defaultCodeRender =

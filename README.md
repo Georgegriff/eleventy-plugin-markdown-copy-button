@@ -9,6 +9,26 @@ module.exports = (eleventyConfig) => {
 };
 ```
 
+## With markdown-it customisation
+
+If you want to have custom `markdown-it` options then ensure you `setLibrary` for markdown (md) before adding the plugin, like so:
+
+```js
+module.exports = (eleventyConfig) => {
+  const markdownIt = require("markdown-it");
+  let markdownLibrary = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true,
+  });
+  eleventyConfig.setLibrary("md", markdownLibrary);
+  const MarkdownCopyButton = require("eleventy-plugin-markdown-copy-button");
+  eleventyConfig.addPlugin(MarkdownCopyButton);
+};
+```
+
+Internally this library defines ` markdownIt.renderer.rules.fence`. This library will respect any prior modifications to this rule. However, if you modify this rule yourself `after` importing `eleventy-plugin-markdown-copy-button` the plugin may stop working.
+
 ## Styling
 
 However you do css style the components that are added however you like, for example:
