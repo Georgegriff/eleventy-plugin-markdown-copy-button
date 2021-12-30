@@ -21,12 +21,7 @@ module.exports = {
       },
       ...webComponentDefinitionsOptions,
     });
-    let markdownIt = require("markdown-it");
-    markdownLibrary = markdownIt({
-      html: true,
-      breaks: true,
-      linkify: true,
-    });
+    markdownLibrary = eleventyConfig.markdownLibrary;
 
     // Remember old renderer, if overridden, or proxy to default renderer
     const defaultCodeRender =

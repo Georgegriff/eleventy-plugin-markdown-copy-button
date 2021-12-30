@@ -1,5 +1,7 @@
 # eleventy-plugin-markdown-copy-button
 
+> Important: currently only works with the default 11ty library markdown-it.
+
 ```js
 module.exports = (eleventyConfig) => {
   const MarkdownCopyButton = require("eleventy-plugin-markdown-copy-button");
