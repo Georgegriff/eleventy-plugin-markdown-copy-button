@@ -96,13 +96,16 @@ For example you could change the path to the copy-component
 
 ```js
 module.exports = (eleventyConfig) => {
-  const MarkdownCopyButton = require("eleventy-plugin-markdown-copy-button");
-  eleventyConfig.addPlugin(MarkdownCopyButton, {
+  eleventyConfig.addPlugin(require("eleventy-plugin-markdown-copy-button"), {
     webComponentDefinitionsOptions: {
       specifiers: {
-        "copy-component": "https://cdn.skypack.dev/copy-component?min",
+        "copy-component": "/copy-component/index.js",
       },
     },
+  });
+
+  eleventyConfig.addPassthroughCopy({
+    "./node_modules/copy-component": "./copy-component",
   });
 };
 ```

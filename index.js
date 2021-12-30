@@ -1,8 +1,8 @@
 const addWebComponentDefinitions = require("eleventy-plugin-add-web-component-definitions");
+const { copyComponentRenderer } = require("./renderer");
 
-const defaultRenderCopyComponent = (copyText, copiedText) => (content) => {
-  return `<copy-component oncopy="this.querySelector('[slot=button]').textContent='${copiedText}'" style="display: block;">${content}<button style="text-transform: uppercase" slot="button">${copyText}</button></copy-component>`;
-};
+const defaultRenderCopyComponent = (copyText, copiedText) => (content) =>
+  copyComponentRenderer(content, copyText, copiedText);
 
 module.exports = {
   initArguments: {},

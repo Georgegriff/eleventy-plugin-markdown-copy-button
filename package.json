@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-markdown-copy-button",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "An 11ty plugin which adds a button which copies markdown code snippets",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,9 @@
   "dependencies": {
     "copy-component": "^0.3.0",
     "eleventy-plugin-add-web-component-definitions": "^2.0.3"
-  }
+  },
+  "files": [
+    "index.js",
+    "renderer.js"
+  ]
 }
