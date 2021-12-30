@@ -31,7 +31,7 @@ module.exports = {
       markdownLibrary = markdownOverride;
     } else if (markdownOverride && !isMarkdownIt) {
       throw new Error(
-        "[eleventy-plugin-markdown-copy-plugin] error: Only markdown-it markdown engine is supported currently."
+        "[eleventy-plugin-markdown-copy-plugin] error: Only markdown-it markdown engine is supported."
       );
     } else {
       // set lib in here, markdown-it comes from 11ty dependency
